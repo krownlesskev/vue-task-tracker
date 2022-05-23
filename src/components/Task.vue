@@ -1,7 +1,7 @@
 <template>
-    <div class="task">
+    <div :class="[task.reminder ? 'reminder' : '', 'task']">
         <h3>{{task.text}}
-            <p class="delete-btn">x</p>
+            <p @click="onDelete(task.id)" class="delete-btn">x</p>
         </h3>
         <p>{{task.day}}</p>
     </div>
@@ -11,24 +11,31 @@
 export default {
     name: "Task",
     props: {
-        task: Object
+        task: Object,
+    },
+    methods: {
+        onDelete(id) {
+            this.$emit('delete-task', id)
+        },   
     }
 }
+
 
 </script>
 
 
-<style scope>
+<style>
 .task {
     background-color: #777;
     margin: .5rem 0;
     padding: .5rem;
     color: #fff;
     transition: .3s;
+    
 }
 
 .task.reminder {
-    border-left: 2px solid yellow;
+    border-left: 5px solid yellow;
 }
 
 h3 {
@@ -38,7 +45,9 @@ h3 {
 
 .delete-btn {
     margin-right: 2rem;
-    background-color: red;
+    color: red;
+    font-size: 24px;
+    font-weight: 600;
     border-radius: 10px;
     padding: 0 10px;
     transition: .3s;
@@ -46,7 +55,7 @@ h3 {
 
 .delete-btn:hover {
     cursor: pointer;
-    transform: scale(1.25);
+    transform: scale(1.5);
     transition: .3s;
 }
 </style>
