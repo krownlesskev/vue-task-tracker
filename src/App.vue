@@ -6,7 +6,7 @@ import Tasks from './components/Tasks.vue';
 <template>
   <div class="container">
     <Header  title="Task Tracker"/>
-    <Tasks @delete-task="deleteTask" :tasks="tasks"/>
+    <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
 
@@ -18,11 +18,18 @@ export default {
       tasks: []
     }
   },
+
   methods: {
     deleteTask(id) {
-      this.tasks = this.tasks.filter((task) => task.id !== id)
-    }
+      if(confirm('Are you sure?')) {
+        this.tasks = this.tasks.filter((task) => task.id !== id)
+      }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task)
+}
   },  
+  
   created() {
     this.tasks = [
       {
