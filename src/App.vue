@@ -1,11 +1,13 @@
 <script setup>
 import Header from './components/Header.vue';
 import Tasks from './components/Tasks.vue';
+import AddTask from './components/AddTask.vue';
 </script>
 
 <template>
   <div class="container">
     <Header  title="Task Tracker"/>
+    <AddTask/>
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
@@ -83,6 +85,10 @@ export default {
   border: none;
   border-radius: 10px;
   transition: .3s;
+}
+
+.btn-block {
+  width: 100%;
 }
 
 .btn:hover {
