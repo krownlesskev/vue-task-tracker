@@ -1,5 +1,5 @@
 <template>
-    <button :style="{backgroundColor: color}" class="btn">{{text}}</button>
+    <button @click="onClick()" :style="{backgroundColor: color}" class="btn">{{text}}</button>
 </template>
 
 <script>
@@ -8,6 +8,11 @@
         props: {
             text: String,
             color: String,
+        },
+        methods: {
+            onClick() {
+                this.$emit('btn-click')
+            }
         }
     }
 </script>
