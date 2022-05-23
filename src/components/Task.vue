@@ -30,7 +30,7 @@ export default {
 }
 
 .task.reminder {
-    border-left: 5px solid yellow;
+    border-left: 5px solid #fff;
 }
 
 h3 {

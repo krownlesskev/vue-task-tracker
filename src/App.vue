@@ -75,9 +75,11 @@ export default {
 }
 
 .container {
-  border: 1px solid red;
+  border-radius: 20px;
   padding: 1rem;
   width: 500px;
+  background-image: linear-gradient(to bottom right, #003170, rgb(0, 0, 0));
+  box-shadow: 5px 5px 20px #000;
 }
 
 .btn {
